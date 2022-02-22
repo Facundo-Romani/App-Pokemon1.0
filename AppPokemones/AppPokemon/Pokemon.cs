@@ -10,9 +10,11 @@ namespace AppPokemon
     {
 
         // Metodos Publicos de la clase pokemon.
-        public int numero { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
+        public int Numero { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
         public  string UrlImagen { get; set; }
+        public Elemento Tipo { get; set; } // Objeto de tipo Elemento.
+        public Elemento Debilidad { get; set; }
     }
 }

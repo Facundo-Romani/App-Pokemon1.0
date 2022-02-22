@@ -37,11 +37,11 @@
             // dgvPokemon
             // 
             this.dgvPokemon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPokemon.Location = new System.Drawing.Point(12, 65);
+            this.dgvPokemon.Location = new System.Drawing.Point(12, 117);
             this.dgvPokemon.Name = "dgvPokemon";
             this.dgvPokemon.RowHeadersWidth = 62;
             this.dgvPokemon.RowTemplate.Height = 28;
-            this.dgvPokemon.Size = new System.Drawing.Size(694, 306);
+            this.dgvPokemon.Size = new System.Drawing.Size(694, 229);
             this.dgvPokemon.TabIndex = 0;
             this.dgvPokemon.SelectionChanged += new System.EventHandler(this.dgvPokemon_SelectionChanged);
             // 
@@ -49,7 +49,7 @@
             // 
             this.pictureBox1.Location = new System.Drawing.Point(777, 82);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(267, 289);
+            this.pictureBox1.Size = new System.Drawing.Size(292, 289);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;

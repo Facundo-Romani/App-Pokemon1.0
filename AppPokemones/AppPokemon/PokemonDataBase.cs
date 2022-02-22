@@ -25,7 +25,7 @@ namespace AppPokemon
                 // Cadena de conexion.
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true ";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Numero, Nombre , descripcion, UrlImagen from POKEMONS";
+                comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad";
                 comando.Connection = conexion;
 
                 // Abrir conexion.
@@ -34,12 +34,17 @@ namespace AppPokemon
 
                 // Si hay una lectura de datos entra al while.
                 while (lectura.Read())
-                {
+                {   
+                    // Mapeo.
                     Pokemon aux = new Pokemon(); // Objeto pokemon.
-                    aux.numero = lectura.GetInt32(0);
-                    aux.nombre = (string)lectura["Nombre"];
-                    aux.descripcion = (string)lectura["descripcion"];
+                    aux.Numero = lectura.GetInt32(0);
+                    aux.Nombre = (string)lectura["Nombre"];
+                    aux.Descripcion = (string)lectura["descripcion"];
                     aux.UrlImagen = (string)lectura["urlImagen"];
+                    aux.Tipo = new Elemento();
+                    aux.Tipo.Descripcion = (string)lectura["tipo"];
+                    aux.Debilidad = new Elemento();
+                    aux.Debilidad.Descripcion = (string)lectura["debilidad"];
 
                     lista.Add(aux); // A la lista le agrego los datos de aux.
                 }

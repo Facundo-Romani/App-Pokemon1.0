@@ -25,6 +25,7 @@ namespace AppPokemon
             PokemonDataBase dataBase = new PokemonDataBase();
             listapokemon = dataBase.listar();
             dgvPokemon.DataSource = listapokemon;
+            dgvPokemon.Columns["UrlImagen"].Visible = false; 
             cargarImagen(listapokemon[0].UrlImagen);
         }
 
