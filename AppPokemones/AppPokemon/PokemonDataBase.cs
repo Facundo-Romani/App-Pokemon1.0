@@ -25,7 +25,7 @@ namespace AppPokemon
                 // Cadena de conexion.
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true ";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Numero, Nombre , descripcion from POKEMONS";
+                comando.CommandText = "Select Numero, Nombre , descripcion, UrlImagen from POKEMONS";
                 comando.Connection = conexion;
 
                 // Abrir conexion.
@@ -39,6 +39,7 @@ namespace AppPokemon
                     aux.numero = lectura.GetInt32(0);
                     aux.nombre = (string)lectura["Nombre"];
                     aux.descripcion = (string)lectura["descripcion"];
+                    aux.UrlImagen = (string)lectura["urlImagen"];
 
                     lista.Add(aux); // A la lista le agrego los datos de aux.
                 }

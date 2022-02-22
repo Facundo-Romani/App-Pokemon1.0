@@ -11,7 +11,9 @@ using System.Windows.Forms;
 namespace AppPokemon
 {
     public partial class Form1 : Form
-    {
+    {   
+        // Propiedad privada para manejar la lista con la carga de imagenes.
+        private List<Pokemon> listapokemon;
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +23,30 @@ namespace AppPokemon
         {
             // Generar instacia de objeto data base.
             PokemonDataBase dataBase = new PokemonDataBase();
-            dgvPokemon.DataSource = dataBase.listar();
+            listapokemon = dataBase.listar();
+            dgvPokemon.DataSource = listapokemon;
+            cargarImagen(listapokemon[0].UrlImagen);
+        }
+
+        private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
+        {
+            Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+            cargarImagen(seleccionado.UrlImagen);
+        }
+
+        // Método para cargar imagen manejando Exception por si se realiza un update en base de datos.
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pictureBox1.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pictureBox1.Load("https://w7.pngwing.com/pngs/848/297/png-transparent-white-graphy-color-empty-banner-blue-angle-white.png");
+                throw ex;
+            }
+
         }
     }
 }

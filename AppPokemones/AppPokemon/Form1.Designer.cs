@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.dgvPokemon = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPokemon
@@ -41,18 +43,30 @@
             this.dgvPokemon.RowTemplate.Height = 28;
             this.dgvPokemon.Size = new System.Drawing.Size(694, 306);
             this.dgvPokemon.TabIndex = 0;
+            this.dgvPokemon.SelectionChanged += new System.EventHandler(this.dgvPokemon_SelectionChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(777, 82);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(267, 289);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.ClientSize = new System.Drawing.Size(969, 490);
+            this.ClientSize = new System.Drawing.Size(1146, 503);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvPokemon);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -60,6 +74,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvPokemon;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
