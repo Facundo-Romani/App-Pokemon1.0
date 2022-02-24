@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPokemon", "AppPokemon\AppPokemon.csproj", "{9A546816-6D13-4393-9DCB-B50FF18629F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{74D7261F-D027-4DB6-8D13-A6CB4F89C98E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{7A7EB51F-8E82-471D-8C2B-FC515BCFF07E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9A546816-6D13-4393-9DCB-B50FF18629F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A546816-6D13-4393-9DCB-B50FF18629F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A546816-6D13-4393-9DCB-B50FF18629F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74D7261F-D027-4DB6-8D13-A6CB4F89C98E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74D7261F-D027-4DB6-8D13-A6CB4F89C98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74D7261F-D027-4DB6-8D13-A6CB4F89C98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74D7261F-D027-4DB6-8D13-A6CB4F89C98E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7EB51F-8E82-471D-8C2B-FC515BCFF07E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7EB51F-8E82-471D-8C2B-FC515BCFF07E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7EB51F-8E82-471D-8C2B-FC515BCFF07E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7EB51F-8E82-471D-8C2B-FC515BCFF07E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

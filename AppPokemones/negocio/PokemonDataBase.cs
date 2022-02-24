@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using dominio;
 
-namespace AppPokemon
+namespace negocio 
 {
-    internal class PokemonDataBase
+    public class PokemonDataBase
     {
         public List<Pokemon> listar() // Método para establecer conexión con base de datos.
         {   

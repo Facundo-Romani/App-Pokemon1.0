@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppPokemon
+namespace dominio
 {
-    internal class Pokemon
+    public class Pokemon
     {
 
         // Metodos Publicos de la clase pokemon.
