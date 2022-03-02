@@ -8,7 +8,6 @@ namespace dominio
 {
     public class Pokemon
     {
-
         // Metodos Publicos de la clase pokemon.
         public int Numero { get; set; }
         public string Nombre { get; set; }
