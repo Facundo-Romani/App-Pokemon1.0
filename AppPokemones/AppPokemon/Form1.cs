@@ -24,8 +24,8 @@ namespace AppPokemon
         private void Form1_Load(object sender, EventArgs e)
         {
             // Generar instacia de objeto data base.
-            PokemonDataBase dataBase = new PokemonDataBase();
-            listapokemon = dataBase.listar();
+            ElementoNegocio pokemon = new ElementoNegocio();
+            listapokemon = pokemon.listar();
             dgvPokemon.DataSource = listapokemon;
             dgvPokemon.Columns["UrlImagen"].Visible = false; 
             cargarImagen(listapokemon[0].UrlImagen);
