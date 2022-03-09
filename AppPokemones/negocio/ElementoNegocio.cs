@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dominio;
 
+
 namespace negocio
 {
     public class ElementoNegocio
@@ -26,6 +27,7 @@ namespace negocio
                     Pokemon aux = new Pokemon();
                     aux.Numero = (int)datos.Lector["Numero"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.UrlImagen = (string)datos.Lector["UrlImagen"];
                     aux.Tipo = new Elemento();
                     aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];

@@ -46,8 +46,25 @@ namespace negocio
             {
                 throw ex;
             }
-            
+
         }
+
+        // Metodo para insertar a la Bdd.
+        public void ejecutarAccion()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        
 
         // Cerrar conexion.
         public void cerrarConexion()

@@ -30,7 +30,8 @@ namespace AppPokemon
             dgvPokemon.Columns["UrlImagen"].Visible = false; 
             cargarImagen(listapokemon[0].UrlImagen);
         }
-
+            
+        // Selecciona el Pokemon de la Fila que demos click.
         private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
         {
             Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
@@ -50,6 +51,13 @@ namespace AppPokemon
                 throw ex;
             }
 
+        }
+
+        // LLamar a ventana FrmAltaPokemon.
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmAltaPokemon alta = new FrmAltaPokemon();
+            alta.ShowDialog();
         }
     }
 }

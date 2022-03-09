@@ -30,6 +30,7 @@
         {
             this.dgvPokemon = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.BtnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -41,29 +42,41 @@
             this.dgvPokemon.Name = "dgvPokemon";
             this.dgvPokemon.RowHeadersWidth = 62;
             this.dgvPokemon.RowTemplate.Height = 28;
-            this.dgvPokemon.Size = new System.Drawing.Size(694, 229);
+            this.dgvPokemon.Size = new System.Drawing.Size(856, 229);
             this.dgvPokemon.TabIndex = 0;
             this.dgvPokemon.SelectionChanged += new System.EventHandler(this.dgvPokemon_SelectionChanged);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(777, 82);
+            this.pictureBox1.Location = new System.Drawing.Point(947, 85);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(292, 289);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // BtnAgregar
+            // 
+            this.BtnAgregar.Location = new System.Drawing.Point(12, 399);
+            this.BtnAgregar.Name = "BtnAgregar";
+            this.BtnAgregar.Size = new System.Drawing.Size(110, 35);
+            this.BtnAgregar.TabIndex = 2;
+            this.BtnAgregar.Text = "Agregar";
+            this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.ClientSize = new System.Drawing.Size(1146, 503);
+            this.ClientSize = new System.Drawing.Size(1380, 503);
+            this.Controls.Add(this.BtnAgregar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvPokemon);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Lista Pokemon";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -75,6 +88,7 @@
 
         private System.Windows.Forms.DataGridView dgvPokemon;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button BtnAgregar;
     }
 }
 
