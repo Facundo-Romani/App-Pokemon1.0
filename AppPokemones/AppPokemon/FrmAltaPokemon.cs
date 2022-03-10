@@ -36,12 +36,30 @@ namespace AppPokemon
                 pokeNuevo.Numero = int.Parse(TxtNumero.Text);
                 pokeNuevo.Nombre = TxtNombre.Text;
                 pokeNuevo.Descripcion = TxtDescipcion.Text;
+                pokeNuevo.Tipo = (Elemento)cmbTipo.SelectedItem;
+                pokeNuevo.Debilidad = (Elemento)cmbDebilidad.SelectedItem;
 
                 bdd.agregarPokemon(pokeNuevo);
                 MessageBox.Show("Agregado Exitosamente");
                 Close();
             }
             catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        // Evento Load ventana AltaPokemon.
+        private void FrmAltaPokemon_Load(object sender, EventArgs e)
+        {
+            ElementoNegocio elementoNegocio = new ElementoNegocio();
+            try
+            {
+                cmbTipo.DataSource = elementoNegocio.listar();
+                cmbDebilidad.DataSource = elementoNegocio.listar();
+            }
+            catch ( Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());

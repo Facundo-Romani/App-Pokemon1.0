@@ -21,10 +21,11 @@ namespace AppPokemon
             InitializeComponent();
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
             // Generar instacia de objeto data base.
-            ElementoNegocio pokemon = new ElementoNegocio();
+            PokemonDataBase pokemon = new PokemonDataBase();
             listapokemon = pokemon.listar();
             dgvPokemon.DataSource = listapokemon;
             dgvPokemon.Columns["UrlImagen"].Visible = false; 

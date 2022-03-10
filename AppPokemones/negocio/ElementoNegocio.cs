@@ -12,29 +12,24 @@ namespace negocio
     {
       
         // Metodos para Lectura.
-        public List<Pokemon> listar()
+        public List<Elemento> listar()
         {   
-            List<Pokemon> lista = new List<Pokemon>();
+            List<Elemento> lista = new List<Elemento>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad");
+                datos.setearConsulta("Select Id, Descripcion From ELEMENTOS");
                 datos.ejecurtarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    Pokemon aux = new Pokemon();
-                    aux.Numero = (int)datos.Lector["Numero"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.UrlImagen = (string)datos.Lector["UrlImagen"];
-                    aux.Tipo = new Elemento();
-                    aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];
-                    aux.Debilidad = new Elemento();
-                    aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+              
+                      Elemento aux = new Elemento();
+                      aux.Id = (int)datos.Lector["Id"];
+                      aux.Descripcion = (string)datos.Lector["Descripcion"];
 
-                    lista.Add(aux);
+                      lista.Add(aux);
                 }
 
                 return lista;
