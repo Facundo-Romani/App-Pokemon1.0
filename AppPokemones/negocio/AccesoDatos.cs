@@ -64,7 +64,12 @@ namespace negocio
                 throw;
             }
         }
-        
+
+        // Metodo para pasar parametros al comando.
+        public void setearParametro(string nombre , object value)
+        {
+            comando.Parameters.AddWithValue( nombre, value);
+        }
 
         // Cerrar conexion.
         public void cerrarConexion()
