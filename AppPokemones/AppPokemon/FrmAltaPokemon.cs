@@ -36,6 +36,7 @@ namespace AppPokemon
                 pokeNuevo.Numero = int.Parse(TxtNumero.Text);
                 pokeNuevo.Nombre = TxtNombre.Text;
                 pokeNuevo.Descripcion = TxtDescipcion.Text;
+                pokeNuevo.UrlImagen = txtUrlimagen.Text;
                 pokeNuevo.Tipo = (Elemento)cmbTipo.SelectedItem;
                 pokeNuevo.Debilidad = (Elemento)cmbDebilidad.SelectedItem;
 
@@ -63,6 +64,24 @@ namespace AppPokemon
             {
 
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        // Cargar URL imagen.
+        private void txtUrlimagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtUrlimagen.Text);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxAltaPoke.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pbxAltaPoke.Load("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fes%2Fsearch%3Fq%3Dimagen%2Bvac%25C3%25ADa&psig=AOvVaw1FoOSG31HgQQwzafMdY2dq&ust=1647718359028000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLCi5q2z0PYCFQAAAAAdAAAAABAD");
             }
         }
     }

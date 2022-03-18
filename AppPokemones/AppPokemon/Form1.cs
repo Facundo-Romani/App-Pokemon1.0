@@ -21,15 +21,9 @@ namespace AppPokemon
             InitializeComponent();
         }
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Generar instacia de objeto data base.
-            PokemonDataBase pokemon = new PokemonDataBase();
-            listapokemon = pokemon.listar();
-            dgvPokemon.DataSource = listapokemon;
-            dgvPokemon.Columns["UrlImagen"].Visible = false; 
-            cargarImagen(listapokemon[0].UrlImagen);
+            cargar();
         }
             
         // Selecciona el Pokemon de la Fila que demos click.
@@ -54,11 +48,30 @@ namespace AppPokemon
 
         }
 
+        private void cargar()
+        {
+            // Generar instacia de objeto data base.
+            PokemonDataBase pokemon = new PokemonDataBase();
+            try
+            {
+                listapokemon = pokemon.listar();
+                dgvPokemon.DataSource = listapokemon;
+                dgvPokemon.Columns["UrlImagen"].Visible = false;
+                cargarImagen(listapokemon[0].UrlImagen);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+        }
+
         // LLamar a ventana FrmAltaPokemon.
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             FrmAltaPokemon alta = new FrmAltaPokemon();
             alta.ShowDialog();
+            cargar();
         }
     }
 }
