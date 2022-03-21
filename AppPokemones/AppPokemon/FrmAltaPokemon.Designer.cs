@@ -152,9 +152,9 @@
             // 
             // pbxAltaPoke
             // 
-            this.pbxAltaPoke.Location = new System.Drawing.Point(327, 43);
+            this.pbxAltaPoke.Location = new System.Drawing.Point(318, 43);
             this.pbxAltaPoke.Name = "pbxAltaPoke";
-            this.pbxAltaPoke.Size = new System.Drawing.Size(279, 322);
+            this.pbxAltaPoke.Size = new System.Drawing.Size(313, 322);
             this.pbxAltaPoke.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxAltaPoke.TabIndex = 12;
             this.pbxAltaPoke.TabStop = false;

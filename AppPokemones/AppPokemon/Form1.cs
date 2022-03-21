@@ -57,6 +57,7 @@ namespace AppPokemon
                 listapokemon = pokemon.listar();
                 dgvPokemon.DataSource = listapokemon;
                 dgvPokemon.Columns["UrlImagen"].Visible = false;
+                dgvPokemon.Columns["Id"].Visible = false;
                 cargarImagen(listapokemon[0].UrlImagen);
             }
             catch (Exception ex)
@@ -72,6 +73,15 @@ namespace AppPokemon
             FrmAltaPokemon alta = new FrmAltaPokemon();
             alta.ShowDialog();
             cargar();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Pokemon seleccionado;
+            seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+
+            FrmAltaPokemon modificar = new FrmAltaPokemon(seleccionado);
+            modificar.ShowDialog();
         }
     }
 }
