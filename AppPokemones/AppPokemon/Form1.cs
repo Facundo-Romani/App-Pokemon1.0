@@ -83,5 +83,41 @@ namespace AppPokemon
             FrmAltaPokemon modificar = new FrmAltaPokemon(seleccionado);
             modificar.ShowDialog();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            eliminar(true);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            eliminar();
+        }
+
+        private void eliminar(bool logico = false)
+        {
+            PokemonDataBase database = new PokemonDataBase();
+            Pokemon seleccionado;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿De verdad querés eliminarlo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+
+                    if (logico)
+                        database.eliminarLogico(seleccionado.Id);
+                    else
+                        database.eliminar(seleccionado.Id);
+
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

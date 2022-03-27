@@ -33,6 +33,7 @@
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPokemon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +73,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(138, 398);
+            this.btnModificar.Location = new System.Drawing.Point(128, 398);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(110, 35);
             this.btnModificar.TabIndex = 3;
@@ -82,12 +83,23 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(263, 398);
+            this.btnEliminar.Location = new System.Drawing.Point(648, 398);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(110, 35);
+            this.btnEliminar.Size = new System.Drawing.Size(202, 35);
             this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Text = "Eliminar Lógico";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(445, 398);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(197, 35);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Eliminar Físico";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -95,6 +107,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.ClientSize = new System.Drawing.Size(1380, 503);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.BtnAgregar);
@@ -117,6 +130,7 @@
         private System.Windows.Forms.Button BtnAgregar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button button1;
     }
 }
 
