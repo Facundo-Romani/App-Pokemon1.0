@@ -20,17 +20,23 @@ namespace AppPokemon
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             cargar();
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Número");
+            cboCampo.Items.Add("Descripción");
         }
             
         // Selecciona el Pokemon de la Fila que demos click.
         private void dgvPokemon_SelectionChanged(object sender, EventArgs e)
         {
-            Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.UrlImagen);
+            if (dgvPokemon.CurrentRow != null)
+            {
+                Pokemon seleccionado = (Pokemon)dgvPokemon.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.UrlImagen);
+            }
+            
         }
 
         // Método para cargar imagen manejando Exception por si se realiza un update en base de datos.
@@ -56,8 +62,7 @@ namespace AppPokemon
             {
                 listapokemon = pokemon.listar();
                 dgvPokemon.DataSource = listapokemon;
-                dgvPokemon.Columns["UrlImagen"].Visible = false;
-                dgvPokemon.Columns["Id"].Visible = false;
+                ocultarColumnas();
                 cargarImagen(listapokemon[0].UrlImagen);
             }
             catch (Exception ex)
@@ -65,6 +70,12 @@ namespace AppPokemon
                 MessageBox.Show(ex.ToString());
             }
             
+        }
+
+        private void ocultarColumnas()
+        {
+            dgvPokemon.Columns["UrlImagen"].Visible = false;
+            dgvPokemon.Columns["Id"].Visible = false;
         }
 
         // LLamar a ventana FrmAltaPokemon.
@@ -117,6 +128,64 @@ namespace AppPokemon
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            PokemonDataBase bdd = new PokemonDataBase();
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+                dgvPokemon.DataSource = bdd.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+          
+        }
+
+        // FindAll funciona como un foreach para filtrar.
+        // TextChanged evento para busqueda de filtro rápido.
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Pokemon> listaFiltrada;
+            string filtro = txtFiltro.Text;
+
+            if (filtro.Length >= 3)
+            {
+                listaFiltrada = listapokemon.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Tipo.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listapokemon;
+            }
+
+            dgvPokemon.DataSource = null;
+            dgvPokemon.DataSource = listaFiltrada;
+            ocultarColumnas();
+        }
+
+       // Filtro lógico par Bdd.
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if (opcion == "Número")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("termina con");
+                cboCriterio.Items.Add("Contine");
             }
         }
     }

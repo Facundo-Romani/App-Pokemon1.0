@@ -37,25 +37,25 @@ namespace negocio
                 {
                     // Mapeo.
                     Pokemon aux = new Pokemon(); // Objeto pokemon.
+                    
                     aux.Id = (int)lectura["Id"];
                     aux.Numero = lectura.GetInt32(0);
                     aux.Nombre = (string)lectura["Nombre"];
-                    aux.Descripcion = (string)lectura["descripcion"];
+                    aux.Descripcion = (string)lectura["Descripcion"];
                     
                     // Validar lectura NULL de DB.
-                    
                     //if(!(lector.IsDBNull(lector.GetOrdinal("UrlImagen"))))
                     //    aux.UrlImagen = (string)lector["UrlImagen"];
                    
                     if (!(lectura["UrlImagen"] is DBNull))
-                        aux.UrlImagen = (string)lectura["urlImagen"];
+                        aux.UrlImagen = (string)lectura["UrlImagen"];
 
                     aux.Tipo = new Elemento();
                     aux.Tipo.Id = (int)lectura["IdTipo"];
                     aux.Tipo.Descripcion = (string)lectura["tipo"];
                     aux.Debilidad = new Elemento();
                     aux.Debilidad.Id = (int)lectura["IdDebilidad"];
-                    aux.Debilidad.Descripcion = (string)lectura["debilidad"];
+                    aux.Debilidad.Descripcion = (string)lectura["Debilidad"];
 
                     lista.Add(aux); // A la lista le agrego los datos de aux.
                 }
@@ -123,6 +123,93 @@ namespace negocio
             }
         }
 
+        // Filtro Rápido.
+        public List<Pokemon> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Pokemon> lista = new List<Pokemon>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad And P.Activo = 1 And ";
+
+                if (campo == "Número")
+                {
+                    switch (criterio)
+                    {
+                        case "Mayor a":
+                            consulta += "Numero > " + filtro;
+                            break;
+                        case "Menor a":
+                            consulta += "Numero < " + filtro;
+                            break;
+                        default:
+                            consulta += "Numero = " + filtro;
+                            break;
+                    }
+                }
+                else if (campo == "Nombre")
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "Nombre like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "Nombre like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "Nombre like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (criterio)
+                    {
+                        case "Comienza con":
+                            consulta += "P.Descripcion like '" + filtro + "%' ";
+                            break;
+                        case "Termina con":
+                            consulta += "P.Descripcion like '%" + filtro + "'";
+                            break;
+                        default:
+                            consulta += "P.Descripcion like '%" + filtro + "%'";
+                            break;
+                    }
+                }
+
+                datos.setearConsulta(consulta);
+                datos.ejecurtarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Pokemon aux = new Pokemon();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Numero = datos.Lector.GetInt32(0);
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    
+                    if (!(datos.Lector["UrlImagen"] is DBNull))
+                        aux.UrlImagen = (string)datos.Lector["UrlImagen"];
+
+                    aux.Tipo = new Elemento();
+                    aux.Tipo.Id = (int)datos.Lector["IdTipo"];
+                    aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];
+                    aux.Debilidad = new Elemento();
+                    aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
+                    aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+          
         // Eliminar poke manera físico. 
         public void eliminar(int id)
         {
