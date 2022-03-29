@@ -43,6 +43,7 @@
             this.pbxAltaPoke = new System.Windows.Forms.PictureBox();
             this.txtUrlimagen = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnAltaImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAltaPoke)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,9 +153,9 @@
             // 
             // pbxAltaPoke
             // 
-            this.pbxAltaPoke.Location = new System.Drawing.Point(318, 43);
+            this.pbxAltaPoke.Location = new System.Drawing.Point(366, 53);
             this.pbxAltaPoke.Name = "pbxAltaPoke";
-            this.pbxAltaPoke.Size = new System.Drawing.Size(313, 322);
+            this.pbxAltaPoke.Size = new System.Drawing.Size(265, 252);
             this.pbxAltaPoke.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxAltaPoke.TabIndex = 12;
             this.pbxAltaPoke.TabStop = false;
@@ -176,12 +177,23 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Url imagen";
             // 
+            // btnAltaImagen
+            // 
+            this.btnAltaImagen.Location = new System.Drawing.Point(301, 174);
+            this.btnAltaImagen.Name = "btnAltaImagen";
+            this.btnAltaImagen.Size = new System.Drawing.Size(42, 37);
+            this.btnAltaImagen.TabIndex = 15;
+            this.btnAltaImagen.Text = "+";
+            this.btnAltaImagen.UseVisualStyleBackColor = true;
+            this.btnAltaImagen.Click += new System.EventHandler(this.btnAltaImagen_Click);
+            // 
             // FrmAltaPokemon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(652, 432);
+            this.Controls.Add(this.btnAltaImagen);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtUrlimagen);
             this.Controls.Add(this.pbxAltaPoke);
@@ -224,5 +236,6 @@
         private System.Windows.Forms.PictureBox pbxAltaPoke;
         private System.Windows.Forms.TextBox txtUrlimagen;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnAltaImagen;
     }
 }

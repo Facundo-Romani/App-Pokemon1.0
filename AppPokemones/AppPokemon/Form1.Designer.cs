@@ -102,7 +102,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(464, 386);
+            this.button1.Location = new System.Drawing.Point(477, 386);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(190, 39);
             this.button1.TabIndex = 5;
@@ -129,7 +129,7 @@
             // 
             // btnFiltrarAvanzado
             // 
-            this.btnFiltrarAvanzado.Location = new System.Drawing.Point(491, 492);
+            this.btnFiltrarAvanzado.Location = new System.Drawing.Point(477, 495);
             this.btnFiltrarAvanzado.Name = "btnFiltrarAvanzado";
             this.btnFiltrarAvanzado.Size = new System.Drawing.Size(101, 31);
             this.btnFiltrarAvanzado.TabIndex = 8;

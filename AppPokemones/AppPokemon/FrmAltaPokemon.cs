@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
+using System.Configuration;
 
 namespace AppPokemon
 {
@@ -16,6 +18,7 @@ namespace AppPokemon
     {   
         // Atributo privado asignado a null para manejar el evento modificar.
         private Pokemon pokemon = null;
+        private OpenFileDialog archivo = null;
         public FrmAltaPokemon()
         {
             InitializeComponent();
@@ -62,6 +65,14 @@ namespace AppPokemon
                     bdd.agregarPokemon(pokemon);
                     MessageBox.Show("Agregado Exitosamente");
                 }
+
+                // Guardo img si la levanto localmente.
+                if (archivo != null && !(txtUrlimagen.Text.ToUpper().Contains("HTTP")))
+                {
+                    // Guardar Imagen.
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["images-folder"] + archivo.SafeFileName);
+                }
+                
                 Close();
 
             }
@@ -118,6 +129,19 @@ namespace AppPokemon
             {
                 pbxAltaPoke.Load("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fes%2Fsearch%3Fq%3Dimagen%2Bvac%25C3%25ADa&psig=AOvVaw1FoOSG31HgQQwzafMdY2dq&ust=1647718359028000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLCi5q2z0PYCFQAAAAAdAAAAABAD");
             }
+        }
+
+        // Levantar y cargar imagen.
+        private void btnAltaImagen_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*. jpg| png|*. png" ;
+            if (archivo.ShowDialog() == DialogResult.OK)
+            {
+                txtUrlimagen.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
+            }
+            
         }
     }
 }
